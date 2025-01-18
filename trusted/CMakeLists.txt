@@ -9,7 +9,7 @@ add_custom_command(
 
 add_library(${PROJECT_NAME}_t STATIC ${MBEDTLS_SGX_SRC_FILES} ${PROJECT_NAME}_t.c glue.c dummy.c net_sockets_proxy.c)
 
-add_subdirectory(mbedtls-${MBEDTLS_VERSION}/include)
+# add_subdirectory(mbedtls-${MBEDTLS_VERSION}/include)
 
 include_directories(
     $(CMAKE_CURRENT_SOURCE_DIR)
@@ -30,10 +30,10 @@ target_link_libraries(${PROJECT_NAME}_t "${SGX_COMMON_CFLAGS} \
     -Wl,-pie,-eenclave_entry -Wl,--export-dynamic \
     -Wl,--defsym,__ImageBase=0")
 
-install(TARGETS ${PROJECT_NAME}_t
-    DESTINATION lib
-    PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
-
-install(FILES ${PROJECT_NAME}.edl
-    DESTINATION lib
-    PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+# install(TARGETS ${PROJECT_NAME}_t
+#     DESTINATION lib
+#     PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+#
+# install(FILES ${PROJECT_NAME}.edl
+#     DESTINATION lib
+#     PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)

@@ -6,6 +6,6 @@ add_library(${PROJECT_NAME}_u STATIC net_ocalls.c std_ocalls.c)
 include_directories(
     ../trusted/mbedtls-${MBEDTLS_VERSION}/include)
 
-install(TARGETS ${PROJECT_NAME}_u
-    DESTINATION lib
-    PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+#install(TARGETS ${PROJECT_NAME}_u
+#    DESTINATION lib
+#    PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
