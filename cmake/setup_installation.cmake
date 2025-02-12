@@ -47,17 +47,18 @@ install(
 )
 
 # Install header files
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/mbedtls
-        DESTINATION include
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/mbedtls/
+        DESTINATION include/mbedtls_SGX
         FILES_MATCHING PATTERN "*.h"
         )
 install(FILES ${CMAKE_SOURCE_DIR}/include/glue.h
-        DESTINATION include/mbedtls
+        DESTINATION include/mbedtls_SGX
         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
         )
 
 # Install EDL file
-install(FILES ${CMAKE_SOURCE_DIR}/trusted/${PROJECT_NAME}.edl
-        DESTINATION include/mbedtls
+install(FILES ${CMAKE_SOURCE_DIR}/trusted/${PROJECT_NAME}.install.edl
+        DESTINATION include/mbedtls_SGX
+        RENAME ${PROJECT_NAME}.edl
         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
         )

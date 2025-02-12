@@ -9,11 +9,7 @@ get_filename_component (_INSTALL_PREFIX "${CMAKE_CURRENT_LIST_DIR}/../../../" AB
 set_and_check(mbedtls_SGX_INCLUDE_DIR  "${_INSTALL_PREFIX}/include")
 set_and_check(mbedtls_SGX_INCLUDE_DIRS "${_INSTALL_PREFIX}/include")
 set_and_check(mbedtls_SGX_LIBRARY_DIR "${_INSTALL_PREFIX}/lib")
-
-MESSAGE(STATUS "###################################")
-
-MESSAGE(STATUS "The package is mbedtls_SGX, and the platform is SGX.")
 set_and_check(mbedtls_SGX_LIBRARY_T "${_INSTALL_PREFIX}/lib/libmbedtls_SGX_t.a")
 set_and_check(mbedtls_SGX_LIBRARY_U "${_INSTALL_PREFIX}/lib/libmbedtls_SGX_u.a")
 
-MESSAGE(STATUS "###################################")
+MESSAGE(STATUS "Found mbedtls_SGX.")
