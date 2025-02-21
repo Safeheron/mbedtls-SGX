@@ -9,9 +9,9 @@ set(version_filename "${config_basename}Version.cmake")
 set(MBEDTLS_SOURCE_PATH "${CMAKE_SOURCE_DIR}")
 
 write_basic_package_version_file(
-        ${version_filename}
-        COMPATIBILITY SameMajorVersion
-)
+        "${PROJECT_NAME}ConfigVersion.cmake"
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY AnyNewerVersion)
 
 configure_package_config_file(
         "cmake/${config_filename}.in" "${config_filename}"
@@ -23,6 +23,8 @@ install(
         TARGETS ${PROJECT_NAME}_t
         EXPORT ${exported_targets_name}
         ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        INCLUDES DESTINATION include
 )
 
 # install untrusted library file
@@ -30,6 +32,8 @@ install(
         TARGETS ${PROJECT_NAME}_u
         EXPORT ${exported_targets_name}
         ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        INCLUDES DESTINATION include
 )
 
 install(
@@ -47,18 +51,17 @@ install(
 )
 
 # Install header files
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/mbedtls/
-        DESTINATION include/mbedtls_SGX
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/mbedtls
+        DESTINATION include
         FILES_MATCHING PATTERN "*.h"
         )
 install(FILES ${CMAKE_SOURCE_DIR}/include/glue.h
-        DESTINATION include/mbedtls_SGX
+        DESTINATION include/mbedtls
         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
         )
 
 # Install EDL file
-install(FILES ${CMAKE_SOURCE_DIR}/trusted/${PROJECT_NAME}.install.edl
-        DESTINATION include/mbedtls_SGX
-        RENAME ${PROJECT_NAME}.edl
+install(FILES ${CMAKE_SOURCE_DIR}/trusted/${PROJECT_NAME}.edl
+        DESTINATION include/mbedtls
         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
         )
