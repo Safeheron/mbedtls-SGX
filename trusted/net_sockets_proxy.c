@@ -23,12 +23,12 @@
 #include "mbedtls/platform.h"
 
 #if !defined(MBEDTLS_CONFIG_FILE)
-#include "mbedtls/config.h"
+#include "mbedtls/mbedtls_config.h"
 #else
 #include MBEDTLS_CONFIG_FILE
 #endif
 
-#include "mbedtls/net.h"
+#include "mbedtls/net_sockets.h"
 
 #if (defined(_WIN32) || defined(_WIN32_WCE)) && !defined(EFIX64) && \
     !defined(EFI32)
@@ -122,6 +122,15 @@ int mbedtls_net_accept_ocall(mbedtls_net_context *bind_ctx,
   return ret;
 }
 
+/**
+ * Check and wait for the context to be ready for read/write
+ */
+int mbedtls_net_poll_ocall(mbedtls_net_context *ctx, uint32_t rw, uint32_t timeout) {
+  int ret;
+  ocall_mbedtls_net_poll(&ret, ctx, rw, timeout);
+  return ret;
+}
+
 /*
  * Set the socket blocking or non-blocking
  */
@@ -174,6 +183,13 @@ int mbedtls_net_send_ocall(void *ctx, const unsigned char *buf, size_t len) {
   int ret;
   ocall_mbedtls_net_send(&ret, (mbedtls_net_context *) ctx, buf, len);
   return ret;
+}
+
+/**
+ * \brief          Closes down the connection and free associated data
+ */
+void mbedtls_net_close_ocall(mbedtls_net_context *ctx) {
+  ocall_mbedtls_net_close(ctx);
 }
 
 /*

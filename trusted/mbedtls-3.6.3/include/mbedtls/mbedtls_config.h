@@ -129,6 +129,7 @@
  *       MBEDTLS_TIMING_ALT is used. See timing.c for more information.
  */
 #define MBEDTLS_HAVE_TIME
+#undef  MBEDTLS_HAVE_TIME
 
 /**
  * \def MBEDTLS_HAVE_TIME_DATE
@@ -150,6 +151,7 @@
  * MBEDTLS_PLATFORM_GMTIME_R_ALT.
  */
 #define MBEDTLS_HAVE_TIME_DATE
+#undef  MBEDTLS_HAVE_TIME_DATE
 
 /**
  * \def MBEDTLS_PLATFORM_MEMORY
@@ -540,7 +542,7 @@
  *
  * Uncomment to use your own hardware entropy collector.
  */
-//#define MBEDTLS_ENTROPY_HARDWARE_ALT
+#define MBEDTLS_ENTROPY_HARDWARE_ALT
 
 /**
  * \def MBEDTLS_AES_ROM_TABLES
@@ -1184,6 +1186,7 @@
  * Enable functions that use the filesystem.
  */
 #define MBEDTLS_FS_IO
+#undef  MBEDTLS_FS_IO
 
 /**
  * \def MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES
@@ -1206,7 +1209,7 @@
  *
  * Uncomment this macro to disable the built-in platform entropy functions.
  */
-//#define MBEDTLS_NO_PLATFORM_ENTROPY
+#define MBEDTLS_NO_PLATFORM_ENTROPY
 
 /**
  * \def MBEDTLS_ENTROPY_FORCE_SHA256
@@ -3053,6 +3056,7 @@
  * This module provides networking routines.
  */
 #define MBEDTLS_NET_C
+#undef  MBEDTLS_NET_C
 
 /**
  * \def MBEDTLS_OID_C
@@ -3315,6 +3319,7 @@
  *           the PSA ITS interface
  */
 #define MBEDTLS_PSA_CRYPTO_STORAGE_C
+#undef  MBEDTLS_PSA_CRYPTO_STORAGE_C
 
 /**
  * \def MBEDTLS_PSA_ITS_FILE_C
@@ -3327,6 +3332,7 @@
  * Requires: MBEDTLS_FS_IO
  */
 #define MBEDTLS_PSA_ITS_FILE_C
+#undef  MBEDTLS_PSA_ITS_FILE_C
 
 /**
  * \def MBEDTLS_PSA_STATIC_KEY_SLOTS
@@ -3619,6 +3625,7 @@
  * Requires: MBEDTLS_SSL_CACHE_C
  */
 #define MBEDTLS_SSL_CACHE_C
+#undef  MBEDTLS_SSL_CACHE_C
 
 /**
  * \def MBEDTLS_SSL_COOKIE_C
@@ -3760,6 +3767,7 @@
  * Module:  library/timing.c
  */
 #define MBEDTLS_TIMING_C
+#undef  MBEDTLS_TIMING_C
 
 /**
  * \def MBEDTLS_VERSION_C
@@ -4105,6 +4113,8 @@
 //#define MBEDTLS_PLATFORM_TIME_MACRO            time /**< Default time macro to use, can be undefined. MBEDTLS_HAVE_TIME must be enabled */
 //#define MBEDTLS_PLATFORM_TIME_TYPE_MACRO       time_t /**< Default time macro to use, can be undefined. MBEDTLS_HAVE_TIME must be enabled */
 //#define MBEDTLS_PLATFORM_FPRINTF_MACRO      fprintf /**< Default fprintf macro to use, can be undefined */
+#include "glue.h"
+#define MBEDTLS_PLATFORM_PRINTF_MACRO        printf_sgx /**< Default printf macro to use, can be undefined */
 //#define MBEDTLS_PLATFORM_PRINTF_MACRO        printf /**< Default printf macro to use, can be undefined */
 /* Note: your snprintf must correctly zero-terminate the buffer! */
 //#define MBEDTLS_PLATFORM_SNPRINTF_MACRO    snprintf /**< Default snprintf macro to use, can be undefined */
