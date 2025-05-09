@@ -1,11 +1,13 @@
 set(SOURCE_FILES
         Enclave_t.c
         ecalls.cpp
-        Log.c
-        pprint.c
-        s_client.c
-        s_server.c
-        ssl_conn_hdlr.cpp)
+        ssl_client1.c
+#        Log.c
+#        pprint.c
+#        s_client2.c
+#        s_server.c
+#        ssl_conn_hdlr.cpp
+)
 
 add_definitions(-DENCLAVE_STD_ALT)
 
@@ -22,6 +24,8 @@ add_custom_command(
 
 add_library(enclave SHARED ${SOURCE_FILES})
 
+message(STATUS "Include = ${CMAKE_SOURCE_DIR}/include")
+
 include_directories(
         $(CMAKE_CURRENT_SOURCE_DIR)
         ${CMAKE_SOURCE_DIR}/include
@@ -31,7 +35,7 @@ include_directories(
 )
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SGX_COMMON_CFLAGS} -nostdinc -fvisibility=hidden -fpie -fstack-protector")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS} -std=c++03 -nostdinc++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS} -std=c++17 -nostdinc++")
 
 set_target_properties(enclave PROPERTIES PREFIX "")
 

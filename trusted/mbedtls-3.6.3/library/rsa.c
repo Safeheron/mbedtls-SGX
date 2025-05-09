@@ -2896,9 +2896,11 @@ static int myrand(void *rng_state, unsigned char *output, size_t len)
         rng_state  = NULL;
     }
 
-    for (i = 0; i < len; ++i) {
-        output[i] = rand();
-    }
+    mbedtls_sgx_drbg_random(NULL, output, len);
+
+//    for (i = 0; i < len; ++i) {
+//        output[i] = rand();
+//    }
 #else
     if (rng_state != NULL) {
         rng_state = NULL;

@@ -7,7 +7,8 @@ add_custom_command(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_library(${PROJECT_NAME}_t STATIC ${MBEDTLS_SGX_SRC_FILES} ${PROJECT_NAME}_t.c glue.c dummy.c net_sockets_proxy.c)
+add_library(${PROJECT_NAME}_t STATIC ${MBEDTLS_SGX_SRC_FILES} ${PROJECT_NAME}_t.c glue.c dummy.c net_sockets_proxy.c
+        ../example/enclave/ssl_client1.h)
 
 # add_subdirectory(mbedtls-${MBEDTLS_VERSION}/include)
 
