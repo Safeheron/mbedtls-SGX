@@ -55,7 +55,13 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/mbedtls
         DESTINATION include
         FILES_MATCHING PATTERN "*.h"
         )
-install(FILES ${CMAKE_SOURCE_DIR}/include/glue.h
+
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/psa
+        DESTINATION include
+        FILES_MATCHING PATTERN "*.h"
+)
+
+install(FILES ${CMAKE_SOURCE_DIR}/include/glue.h ${CMAKE_SOURCE_DIR}/include/sgx_time_imp.h
         DESTINATION include/mbedtls
         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
         )

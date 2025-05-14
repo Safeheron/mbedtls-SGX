@@ -23,6 +23,11 @@ enclave {
         void ocall_mbedtls_net_free( [in, out] mbedtls_net_context *ctx );
         void ocall_mbedtls_net_close( [in, out] mbedtls_net_context *ctx );
 
+        // time support
+        void ocall_mbedtls_time([out] int64_t *unix_time);
+        void ocall_mbedtls_time_ms([out] uint64_t *millis);
+        void ocall_mbedtls_gmtime_r([in] int64_t *unix_time, [out] struct tm *result);
+
         // printf
         int ocall_print_string([in, string] const char *str);
     };

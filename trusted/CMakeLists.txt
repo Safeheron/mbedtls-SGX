@@ -8,7 +8,7 @@ add_custom_command(
 )
 
 add_library(${PROJECT_NAME}_t STATIC ${MBEDTLS_SGX_SRC_FILES} ${PROJECT_NAME}_t.c glue.c dummy.c net_sockets_proxy.c
-        ../example/enclave/ssl_client1.h)
+        sgx_time_imp.c)
 
 # add_subdirectory(mbedtls-${MBEDTLS_VERSION}/include)
 
