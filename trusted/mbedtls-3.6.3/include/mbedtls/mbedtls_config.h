@@ -250,7 +250,7 @@
  * platform function
  */
 //#define MBEDTLS_PLATFORM_SETBUF_ALT
-//#define MBEDTLS_PLATFORM_EXIT_ALT
+#define MBEDTLS_PLATFORM_EXIT_ALT
 #define MBEDTLS_PLATFORM_TIME_ALT
 //#define MBEDTLS_PLATFORM_FPRINTF_ALT
 //#define MBEDTLS_PLATFORM_PRINTF_ALT
@@ -4091,7 +4091,7 @@
  */
 //#define MBEDTLS_PLATFORM_STD_FREE            free
 //#define MBEDTLS_PLATFORM_STD_SETBUF      setbuf /**< Default setbuf to use, can be undefined */
-//#define MBEDTLS_PLATFORM_STD_EXIT            exit /**< Default exit to use, can be undefined */
+#define MBEDTLS_PLATFORM_STD_EXIT            mbedtls_sgx_exit /**< Default exit to use, can be undefined */
 #include "sgx_time_imp.h"
 #define MBEDTLS_PLATFORM_STD_TIME             mbedtls_sgx_time /**< Default time to use, can be undefined. MBEDTLS_HAVE_TIME must be enabled */
 //#define MBEDTLS_PLATFORM_STD_FPRINTF      fprintf /**< Default fprintf to use, can be undefined */

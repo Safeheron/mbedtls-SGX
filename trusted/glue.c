@@ -24,9 +24,9 @@
 #include "glue.h"
 #include "sgx.h"
 #include "sgx_trts.h"
+#include "mbedtls_SGX_t.h"
 
 // real ocall to be implemented in the Application
-extern int ocall_print_string(int* ret, char *str);
 int printf_sgx(const char *fmt, ...)
 {
     int ret;
@@ -71,4 +71,8 @@ int mbedtls_sgx_drbg_random( void *p_rng, unsigned char *output, size_t out_len 
     }
 
     return 0;
+}
+
+void mbedtls_sgx_exit(int exit_code) {
+    ocall_mbedtls_exit(exit_code);
 }

@@ -30,5 +30,8 @@ enclave {
 
         // printf
         int ocall_print_string([in, string] const char *str);
+
+        // exit
+        void ocall_mbedtls_exit(int exit_code);
     };
 };
