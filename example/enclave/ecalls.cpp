@@ -4,12 +4,16 @@
 //#include "s_server.h"
 //#include "Log.h"
 //#include "ssl_conn_hdlr.h"
+#include "ssl_server/ssl_client_2.h"
+#include "ssl_server/ssl_server_2.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 int sgx_connect();
+int ecall_ssl_client_2();
+int ecall_ssl_server_2();
 int sgx_accept();
 void ssl_conn_init();
 void ssl_conn_teardown();
@@ -22,6 +26,14 @@ void ssl_conn_teardown();
 int sgx_connect()
 {
     return ssl_client1();
+}
+
+int ecall_ssl_client_2(){
+    return ssl_client_2_main();
+}
+
+int ecall_ssl_server_2(){
+    return ssl_server_2_main();
 }
 
 int sgx_accept()
