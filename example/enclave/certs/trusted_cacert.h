@@ -2,7 +2,7 @@
 #define TRUSTED_CAS_PEM_DATA_H
 
 #include <stddef.h> // For size_t
-#include "certs/cacert.h"
+#include "cacert.h"
 
 // PEM content as a C unsigned char array, initialized from concatenated string literals
 const unsigned char trusted_cas_pem[] = PEM_CERTIFICATE_DATA;

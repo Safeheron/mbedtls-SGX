@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#include "ssl_client_2.h"
+#include "c2_ssl_client.h"
 
 #include "mbedtls/platform.h"
 
@@ -154,7 +154,7 @@ exit:
     return NULL;
 }
 
-int ssl_client_2_main(void)
+int c2_ssl_client_main(void)
 {
     pthread_t threads[NUM_CLIENTS];
     for (int i = 0; i < NUM_CLIENTS; ++i) {

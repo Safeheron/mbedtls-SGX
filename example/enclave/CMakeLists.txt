@@ -1,9 +1,9 @@
 set(SOURCE_FILES
         Enclave_t.c
         ecalls.cpp
-        ssl_client1.c
-        ssl_server/ssl_client_2.c
-        ssl_server/ssl_server_2.c
+        case_1/c1_ssl_client.c
+        case_2/c2_ssl_client.c
+        case_2/c2_ssl_server.c
 #        Log.c
 #        pprint.c
 #        s_client2.c

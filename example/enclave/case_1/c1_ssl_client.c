@@ -1,10 +1,3 @@
-/*
- *  SSL client demonstration program
- *
- *  Copyright The Mbed TLS Contributors
- *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
- */
-
 #include "mbedtls/build_info.h"
 
 #include "mbedtls/platform.h"
@@ -15,7 +8,8 @@
 #include "mbedtls/entropy.h"
 #include "mbedtls/ctr_drbg.h"
 #include "mbedtls/error.h"
-#include "trusted_cacert.h"
+#include "../certs/trusted_cacert.h"
+#include "c1_ssl_client.h"
 
 #include <string.h>
 
@@ -35,7 +29,7 @@ static void my_debug(void *ctx, int level,
     mbedtls_printf("%s:%04d: %s\n\n", file, line, str);
 }
 
-int ssl_client1(void)
+int c1_ssl_client_main(void)
 {
     int ret = 1, len;
     int exit_code = MBEDTLS_EXIT_FAILURE;

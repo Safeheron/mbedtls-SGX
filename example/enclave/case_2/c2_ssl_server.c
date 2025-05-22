@@ -55,7 +55,7 @@ int main_disabled_due_to_config(void) {
 #include "mbedtls/ssl_cache.h"
 #endif
 
-#include "ssl_server_2.h"
+#include "c2_ssl_server.h"
 
 #define HTTP_RESPONSE \
     "HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n" \
@@ -170,12 +170,12 @@ static mbedtls_ssl_cache_context G_ssl_cache;
 #endif
 
 pthread_mutex_t stop_flag_lock;
-void ssl_server_2_stop_server(void) {
+void c2_stop_server(void) {
     pthread_mutex_lock(&stop_flag_lock);
     G_stop_server = 1;
     pthread_mutex_unlock(&stop_flag_lock);
 }
-int ssl_server_2_get_stop_flag(void) {
+int c2_get_stop_flag(void) {
     int ret;
     pthread_mutex_lock(&stop_flag_lock);
     ret = G_stop_server;
@@ -408,7 +408,7 @@ void thread_pool_shutdown(thread_pool_t *pool) {
 
 
 // --- Main Server Function ---
-int ssl_server_2_main(void) {
+int c2_ssl_server_main(void) {
     int ret = 1; // Default to failure
     const char *pers = "https_server_threadpool";
     char client_ip_str[16];

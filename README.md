@@ -1,3 +1,27 @@
+# ⚠️ Project Maintenance Notice
+
+> **This project is a maintained fork of [mbedtls-SGX](https://github.com/bl4ck5un/mbedtls-SGX)**.
+
+The original repository has not been actively maintained in recent years. To continue support for SGX-based TLS development, **Safeheron** has taken over maintenance and further development of this project.
+
+## ✅ Enhancements by Safeheron
+
+Safeheron has contributed the following major improvements:
+
+- **Upgraded mbedtls to [v3.6.3](https://github.com/Mbed-TLS/mbedtls/releases/tag/v3.6.3)**. Updated to the latest version to support modern TLS features, stay current with upstream security fixes, and mitigate vulnerabilities present in older versions — ensuring long-term security support.
+
+- **Added multi-threading support**. Enclaves using mbedtls-SGX can now safely handle concurrent TLS sessions.
+
+- **Introduced SGX-compatible time support**. Enables trusted time-based certificate validation within enclaves (e.g., checking TLS certificate expiry), which was previously unavailable due to lack of wall-clock access in SGX.
+
+- **Rewrote the example programs**. The examples have been redesigned to be cleaner, easier to reuse, and better suited for integration, debugging, and testing.
+
+This version brings the project up to date with current SGX and TLS best practices.
+
+> 📌 For existing users of the original mbedtls-SGX, we strongly recommend migrating to this maintained version to ensure compatibility with modern SGX development practices, improved performance, and up-to-date TLS security guarantees.
+
+---
+
 # mbedtls-SGX: a TLS stack in SGX
 
 mbedtls-SGX is a port of [mbedtls](https://github.com/ARMmbed/mbedtls) (previously PolarSSL) to Intel-SGX. mbedtls-SGX aims to preserve **all** of the [features of mbedtls](https://tls.mbed.org/core-features). With mbedtls-SGX, you can

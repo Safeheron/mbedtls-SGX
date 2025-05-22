@@ -15,10 +15,10 @@ def create_c_header(pem_file_path, header_file_path, macro_name):
         with open(pem_file_path, 'r', encoding='utf-8') as f_pem:
             pem_lines_raw = f_pem.readlines()
     except FileNotFoundError:
-        print(f"错误：找不到输入的 PEM 文件：{pem_file_path}")
+        print(f"Error: Cannot find the specified PEM file:{pem_file_path}")
         return
     except Exception as e:
-        print(f"错误：读取 PEM 文件时出错：{e}")
+        print(f"Error: Failed to read the PEM file：{e}")
         return
 
     # Prepare header guard based on the output filename
@@ -62,27 +62,27 @@ def create_c_header(pem_file_path, header_file_path, macro_name):
     try:
         with open(header_file_path, 'w', encoding='utf-8') as f_header:
             f_header.write("".join(output_content))
-        print(f"成功生成头文件：{header_file_path}")
+        print(f"Header file generated successfully：{header_file_path}")
     except Exception as e:
-        print(f"错误：写入头文件时出错：{e}")
+        print(f"Error: Failed to write the header file：{e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="将 PEM 文件转换为包含宏定义的 C 头文件 (Python 3)。",
+        description="Convert a PEM file into a C header file with macro definitions (Python 3).",
         formatter_class=argparse.RawTextHelpFormatter
     )
     parser.add_argument(
         "input_file",
-        help="输入的 PEM 文件路径。"
+        help="Path to the input PEM file."
     )
     parser.add_argument(
         "output_file",
-        help="输出的 C 头文件路径。"
+        help="Path to the output C header file."
     )
     parser.add_argument(
         "--macro_name",
         default="PEM_CERTIFICATE_DATA",
-        help="在头文件中定义的 C 宏的名称。\n（默认值：PEM_CERTIFICATE_DATA）"
+        help="Name of the C macro defined in the header file. (Default: PEM_CERTIFICATE_DATA）"
     )
 
     args = parser.parse_args()

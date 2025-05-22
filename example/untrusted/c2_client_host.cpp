@@ -33,7 +33,7 @@ int SGX_CDECL main(int argc, char* argv[]) {
 
 
     printf("Enclave %lu created\n", enclave_id);
-    sgx_status_t ecall_ret = sgx_connect(enclave_id, &ret);
+    sgx_status_t ecall_ret = ecall_c2_client(enclave_id, &ret);
     if (sgx_status != SGX_SUCCESS || ret != 0) {
         printf("\necall failed!\n");
         return -1;
