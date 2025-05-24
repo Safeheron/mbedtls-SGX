@@ -29,7 +29,7 @@ enclave {
         void ocall_mbedtls_gmtime_r([in] int64_t *unix_time, [out] struct tm *result);
 
         // printf
-        int ocall_print_string([in, string] const char *str);
+        int ocall_mbedtls_print_string([in, string] const char *str);
 
         // exit
         void ocall_mbedtls_exit(int exit_code);
