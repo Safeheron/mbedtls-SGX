@@ -28,7 +28,7 @@ extern "C" {
 
 int mbedtls_sgx_drbg_random( void *p_rng, unsigned char *output, size_t out_len );
 int mbedtls_hardware_poll(void *data, unsigned char *output, size_t len, size_t *olen );
-int printf_sgx(const char *fmt, ...);
+int mbedtls_sgx_printf(const char *fmt, ...);
 void mbedtls_sgx_exit(int exit_code);
 
 
