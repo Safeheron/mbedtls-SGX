@@ -1,4 +1,5 @@
 enclave {
+    include "time.h"
     include "mbedtls/net_sockets.h"
     include "mbedtls/timing.h"
 
